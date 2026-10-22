@@ -461,43 +461,12 @@
             <a href="https://www.tickettailor.com/events/northeasthampshireconservativesassociation/2485460" target="_blank" rel="noopener" style="color:var(--gold);">Ticket Tailor</a>.
           </p>
 
-          <form id="reply-form" class="reply-grid" novalidate>
-            <div class="field">
-              <label for="f-name">Your name</label>
-              <input id="f-name" name="name" type="text" autocomplete="name" placeholder="e.g. A. Member" />
-            </div>
-            <div class="field">
-              <label for="f-tickets">Number of tickets</label>
-              <select id="f-tickets" name="tickets">
-                <option value="1">1</option>
-                <option value="2" selected>2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-              </select>
-            </div>
-            <div class="field full">
-              <label for="f-guests">Guest names (for the table plan)</label>
-              <input id="f-guests" name="guests" type="text" placeholder="Names of everyone in your party" />
-            </div>
-            <div class="field full">
-              <label for="f-dietary">Dietary requirements</label>
-              <textarea id="f-dietary" name="dietary" placeholder="e.g. one vegetarian; one guest must have no cheese"></textarea>
-            </div>
-          </form>
           <div class="actions">
-            <a class="btn" id="reply-email" href="mailto:ken.crookes@nehc.org.uk?subject=Annual%20Association%20Dinner%20—%20reply">Reply by email</a>
+            <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSegqIL5J_NtVF1Hwk-8YiyzlQmxrfJgpC65vVHFIt0NFXaq-w/viewform" target="_blank" rel="noopener">Pay by bank transfer</a>
             <a class="btn secondary" href="https://www.tickettailor.com/events/northeasthampshireconservativesassociation/2485460" target="_blank" rel="noopener">Pay by card via Ticket Tailor</a>
-            <button class="btn secondary" id="copy-reply" type="button">Copy reply details</button>
-            <span class="copied" id="copied-msg" role="status"></span>
           </div>
           <p class="form-note">
-            Replies go to Ken Crookes at the Association,
-            <a href="mailto:ken.crookes@nehc.org.uk" style="color:var(--gold);">ken.crookes@nehc.org.uk</a>.
-            Nothing you type here is stored — the button simply opens your email, ready to send.
+            The booking form shows the Association&rsquo;s bank details for your transfer, and asks you to confirm once you have paid.
           </p>
         </div>
       </section>
@@ -512,67 +481,6 @@
       </footer>
     </div>
 
-    <script>
-      (function () {
-        // Countdown to the dinner (2 December 2026, 19:00 London).
-        var target = new Date("2026-12-02T19:00:00Z");
-        var el = document.getElementById("countdown");
-        var now = new Date();
-        var days = Math.floor((target - now) / 86400000);
-        if (days > 1) el.textContent = days + " days to go";
-        else if (days === 1) el.textContent = "Tomorrow evening";
-        else if (days === 0) el.textContent = "This evening — reception from 7.00 pm";
-        else el.textContent = "";
-
-        // Reply form -> pre-filled email / clipboard text (nothing is stored or sent by the page).
-        var nameEl = document.getElementById("f-name");
-        var ticketsEl = document.getElementById("f-tickets");
-        var guestsEl = document.getElementById("f-guests");
-        var dietaryEl = document.getElementById("f-dietary");
-        var link = document.getElementById("reply-email");
-        var copyBtn = document.getElementById("copy-reply");
-        var copiedMsg = document.getElementById("copied-msg");
-
-        function replyText() {
-          var lines = [
-            "NEHCA Annual Association Dinner — Wednesday 2 December 2026, The Elvetham",
-            "",
-            "Name: " + (nameEl.value.trim() || "—"),
-            "Tickets: " + ticketsEl.value + " × £90",
-            "Guests: " + (guestsEl.value.trim() || "—"),
-            "Dietary requirements: " + (dietaryEl.value.trim() || "None")
-          ];
-          return lines.join("\n");
-        }
-        function refresh() {
-          var subject = "Annual Association Dinner — reply from " + (nameEl.value.trim() || "guest");
-          link.href =
-            "mailto:ken.crookes@nehc.org.uk?subject=" +
-            encodeURIComponent(subject) +
-            "&body=" +
-            encodeURIComponent(replyText());
-        }
-        [nameEl, ticketsEl, guestsEl, dietaryEl].forEach(function (f) {
-          f.addEventListener("input", refresh);
-          f.addEventListener("change", refresh);
-        });
-        refresh();
-
-        copyBtn.addEventListener("click", function () {
-          var text = replyText();
-          function done() {
-            copiedMsg.textContent = "Copied — paste it into an email to ken.crookes@nehc.org.uk";
-            setTimeout(function () { copiedMsg.textContent = ""; }, 5000);
-          }
-          if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(text).then(done, function () {
-              copiedMsg.textContent = "Copy not available in this browser — use “Reply by email” instead.";
-            });
-          } else {
-            copiedMsg.textContent = "Copy not available in this browser — use “Reply by email” instead.";
-          }
-        });
-      })();
-    </script>
+    
   </body>
 </html>
