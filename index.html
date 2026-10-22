@@ -28,6 +28,8 @@
         --gold-bright: #c9a54a;
         --gold-pale: #e6d193;
         --party-blue: #009fe3;
+        --field-bg: #ffffff;
+        --field-line: #cfc6ac;
         --shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
       }
       @media (prefers-color-scheme: dark) {
@@ -244,23 +246,39 @@
       }
       .lot p { font-size: 1.1rem; line-height: 1.55; margin: 0 0 8px; }
 
-      /* Booking panel */
-      .booking-panel {
+      /* Reply panel */
+      .reply-panel {
         background: var(--card);
         color: var(--card-ink);
         border-radius: 6px;
         box-shadow: var(--shadow);
         padding: clamp(24px, 5vw, 44px);
       }
-      .booking-panel h2 { color: var(--card-ink); }
-      .booking-panel p.body, .booking-panel p.lede { color: var(--card-ink); }
-      .booking-actions { margin-top: 20px; }
+      .reply-panel h2 { color: var(--card-ink); }
+      .reply-panel p.body, .reply-panel p.lede { color: var(--card-ink); }
+      .reply-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 18px; }
+      .field label {
+        display: block; font-family: "Jost", sans-serif; font-size: 0.7rem;
+        letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px;
+      }
+      .field input, .field textarea, .field select {
+        width: 100%; font-family: "Cormorant Garamond", serif; font-size: 1.12rem;
+        padding: 10px 12px; border: 1px solid var(--field-line); border-radius: 3px;
+        background: var(--field-bg); color: #1d2432;
+      }
+      .field.full { grid-column: 1 / -1; }
+      .field textarea { min-height: 74px; resize: vertical; }
+      .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; align-items: center; }
       .btn {
         font-family: "Jost", sans-serif; letter-spacing: 0.14em; text-transform: uppercase;
         font-size: 0.78rem; font-weight: 500; cursor: pointer;
         padding: 13px 22px; border-radius: 3px; border: 1px solid var(--gold);
         background: var(--card-ink); color: #f3ecd9; text-decoration: none; display: inline-block;
       }
+      .btn.secondary { background: transparent; color: var(--card-ink); }
+      .btn[disabled] { opacity: 0.45; cursor: not-allowed; }
+      .form-note { font-size: 1rem; font-style: italic; color: var(--card-ink-soft); margin-top: 12px; }
+      .copied { font-family: "Jost", sans-serif; font-size: 0.8rem; color: var(--gold); }
 
       .foot {
         margin-top: 56px; text-align: center;
@@ -280,7 +298,7 @@
       @media (max-width: 640px) {
         .speaker-grid { grid-template-columns: 1fr; }
         .speaker-photo { max-width: 280px; margin: 0 auto; }
-        .evening-grid { grid-template-columns: 1fr; }
+        .evening-grid, .reply-grid { grid-template-columns: 1fr; }
         .masthead .assoc { text-align: center; }
         .masthead { flex-direction: column; gap: 8px; }
       }
@@ -313,7 +331,7 @@
           <h1 class="title">Annual Association<br />Dinner</h1>
 
           <p class="speaker-line"><em>with guest speaker</em> <strong>Robert Colvile</strong></p>
-          <p class="speaker-role">Head of Small Business and Entrepreneurship, Centre for Policy Studies &middot; Columnist, The Sunday Times</p>
+          <p class="speaker-role">Director of the Centre for Policy Studies &middot; Columnist, The Sunday Times</p>
 
           <div class="details">
             <div class="detail">
@@ -363,11 +381,9 @@
           </figure>
           <div>
             <p class="lede">
-              One of the most influential voices in Conservative thinking, Robert Colvile is Head of
-              Small Business and Entrepreneurship at the Centre for Policy Studies — the think tank
-              founded by Margaret Thatcher and Sir Keith Joseph — having stepped down in September
-              2026 after nine years as its Director. He writes a weekly column for <em>The Sunday
-              Times</em>.
+              One of the most influential voices in Conservative thinking, Robert Colvile directs the
+              Centre for Policy Studies — the think tank founded by Margaret Thatcher and Sir Keith
+              Joseph — and writes a weekly column for <em>The Sunday Times</em>.
             </p>
             <p class="body">
               In December 2019 he stepped away from the CPS to co-author the Conservative Party&rsquo;s
@@ -377,13 +393,13 @@
               examined how technology is speeding up every part of modern life.
             </p>
             <ul class="fact-list">
-              <li><b>Head of Small Business and Entrepreneurship</b>, Centre for Policy Studies; <b>Director</b> of the CPS (2017 to 2026) and <b>Editor-in-Chief</b> of CapX</li>
+              <li><b>Director</b>, Centre for Policy Studies, and <b>Editor-in-Chief</b> of CapX</li>
               <li><b>Co-author</b> of the 2019 Conservative Party general election manifesto</li>
               <li><b>Columnist</b>, The Sunday Times; formerly Head of Comment at the Telegraph</li>
               <li><b>Adviser</b> to the JCB Group; advisory board member, PricedOut</li>
             </ul>
             <p class="body dim" style="margin-top:14px; font-size:1rem;">
-              Full profile: <a href="https://cps.org.uk/our-team/robert-colvile/" target="_blank" rel="noopener">Centre for Policy Studies</a>
+              Full profile: <a href="http://cps.org.uk/our-team/robert-colvile/" target="_blank" rel="noopener">Centre for Policy Studies</a>
             </p>
           </div>
         </div>
@@ -419,29 +435,69 @@
         </div>
       </section>
 
-      <!-- ============ TICKETS & BOOKING ============ -->
-      <section class="block" aria-labelledby="booking-h">
-        <div class="booking-panel">
-          <p class="kicker" style="color:var(--gold);">Tickets &amp; Booking</p>
-          <h2 id="booking-h">&pound;90 per person</h2>
+      <!-- ============ TICKETS & REPLIES ============ -->
+      <section class="block" aria-labelledby="reply-h">
+        <div class="reply-panel">
+          <p class="kicker" style="color:var(--gold);">Tickets &amp; Replies</p>
+          <h2 id="reply-h">&pound;90 per person</h2>
           <p class="body">
             Tickets are <b>&pound;90 per person</b>. The ticket includes the sparkling wine reception and a three-course
             dinner, with soft drinks and water served throughout the evening. Places are limited
             by the capacity of The Library, and final numbers must be confirmed to The Elvetham
-            by <b>Wednesday 18 November</b> — so please book <b>by Wednesday 18 November
+            by <b>Wednesday 18 November</b> — so please reply <b>by Wednesday 18 November
             2026</b> at the latest.
           </p>
           <p class="body">
             Drinks can also be ordered for the evening: a pre-order drinks list will be sent out to all
             participants in advance, so you can place your order ahead of the night. Please note
-            any dietary requirements on the booking form.
+            any dietary requirements on your reply.
           </p>
           <p class="body">
-            <b>Booking is through the booking form</b> — please use it to book your places:
+            <b>How to book and pay:</b> please complete the
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSegqIL5J_NtVF1Hwk-8YiyzlQmxrfJgpC65vVHFIt0NFXaq-w/viewform" target="_blank" rel="noopener" style="color:var(--gold);">booking form</a>.
+            On the form you can choose either of the two ways to pay, by bank transfer (the
+            Association&rsquo;s bank details are on the form) or by card via
+            <a href="https://www.tickettailor.com/events/northeasthampshireconservativesassociation/2485460" target="_blank" rel="noopener" style="color:var(--gold);">Ticket Tailor</a>.
           </p>
-          <div class="booking-actions">
-            <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSegqIL5J_NtVF1Hwk-8YiyzlQmxrfJgpC65vVHFIt0NFXaq-w/viewform" target="_blank" rel="noopener">Book Now — Booking Form</a>
+
+          <form id="reply-form" class="reply-grid" novalidate>
+            <div class="field">
+              <label for="f-name">Your name</label>
+              <input id="f-name" name="name" type="text" autocomplete="name" placeholder="e.g. A. Member" />
+            </div>
+            <div class="field">
+              <label for="f-tickets">Number of tickets</label>
+              <select id="f-tickets" name="tickets">
+                <option value="1">1</option>
+                <option value="2" selected>2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+              </select>
+            </div>
+            <div class="field full">
+              <label for="f-guests">Guest names (for the table plan)</label>
+              <input id="f-guests" name="guests" type="text" placeholder="Names of everyone in your party" />
+            </div>
+            <div class="field full">
+              <label for="f-dietary">Dietary requirements</label>
+              <textarea id="f-dietary" name="dietary" placeholder="e.g. one vegetarian; one guest must have no cheese"></textarea>
+            </div>
+          </form>
+          <div class="actions">
+            <a class="btn" id="reply-email" href="mailto:ken.crookes@nehc.org.uk?subject=Annual%20Association%20Dinner%20—%20reply">Reply by email</a>
+            <a class="btn secondary" href="https://www.tickettailor.com/events/northeasthampshireconservativesassociation/2485460" target="_blank" rel="noopener">Pay by card via Ticket Tailor</a>
+            <button class="btn secondary" id="copy-reply" type="button">Copy reply details</button>
+            <span class="copied" id="copied-msg" role="status"></span>
           </div>
+          <p class="form-note">
+            Replies go to Ken Crookes at the Association,
+            <a href="mailto:ken.crookes@nehc.org.uk" style="color:var(--gold);">ken.crookes@nehc.org.uk</a>.
+            Nothing you type here is stored — the button simply opens your email, ready to send.
+          </p>
         </div>
       </section>
 
@@ -466,6 +522,55 @@
         else if (days === 1) el.textContent = "Tomorrow evening";
         else if (days === 0) el.textContent = "This evening — reception from 7.00 pm";
         else el.textContent = "";
+
+        // Reply form -> pre-filled email / clipboard text (nothing is stored or sent by the page).
+        var nameEl = document.getElementById("f-name");
+        var ticketsEl = document.getElementById("f-tickets");
+        var guestsEl = document.getElementById("f-guests");
+        var dietaryEl = document.getElementById("f-dietary");
+        var link = document.getElementById("reply-email");
+        var copyBtn = document.getElementById("copy-reply");
+        var copiedMsg = document.getElementById("copied-msg");
+
+        function replyText() {
+          var lines = [
+            "NEHCA Annual Association Dinner — Wednesday 2 December 2026, The Elvetham",
+            "",
+            "Name: " + (nameEl.value.trim() || "—"),
+            "Tickets: " + ticketsEl.value + " × £90",
+            "Guests: " + (guestsEl.value.trim() || "—"),
+            "Dietary requirements: " + (dietaryEl.value.trim() || "None")
+          ];
+          return lines.join("\n");
+        }
+        function refresh() {
+          var subject = "Annual Association Dinner — reply from " + (nameEl.value.trim() || "guest");
+          link.href =
+            "mailto:ken.crookes@nehc.org.uk?subject=" +
+            encodeURIComponent(subject) +
+            "&body=" +
+            encodeURIComponent(replyText());
+        }
+        [nameEl, ticketsEl, guestsEl, dietaryEl].forEach(function (f) {
+          f.addEventListener("input", refresh);
+          f.addEventListener("change", refresh);
+        });
+        refresh();
+
+        copyBtn.addEventListener("click", function () {
+          var text = replyText();
+          function done() {
+            copiedMsg.textContent = "Copied — paste it into an email to ken.crookes@nehc.org.uk";
+            setTimeout(function () { copiedMsg.textContent = ""; }, 5000);
+          }
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(done, function () {
+              copiedMsg.textContent = "Copy not available in this browser — use “Reply by email” instead.";
+            });
+          } else {
+            copiedMsg.textContent = "Copy not available in this browser — use “Reply by email” instead.";
+          }
+        });
       })();
     </script>
   </body>
