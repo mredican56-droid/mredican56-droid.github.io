@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drinks Order — NEHCA Annual Association Dinner</title>
+<style>
+  body { margin:0; background:#f4efe4; font-family: Georgia, 'Times New Roman', serif; color:#1a2e52; }
+  .wrap { max-width:640px; margin:0 auto; padding:28px 18px 60px; }
+  .card { background:#ffffff; border:1px solid #ddd3ba; border-top:8px solid #1a2e52; padding:28px 26px; }
+  h1 { font-size:24px; margin:0 0 4px; text-align:center; letter-spacing:.02em; }
+  .sub { text-align:center; color:#8a6d2f; font-size:14px; letter-spacing:.14em; text-transform:uppercase; margin:0 0 18px; }
+  p { font-family: Arial, Helvetica, sans-serif; font-size:14.5px; line-height:1.55; }
+  h2 { font-size:16px; letter-spacing:.12em; text-transform:uppercase; color:#8a6d2f; border-bottom:1px solid #e4dcc4; padding-bottom:6px; margin:26px 0 10px; }
+  label.f { display:block; font-family:Arial, Helvetica, sans-serif; font-size:13px; font-weight:bold; margin:14px 0 5px; }
+  input[type=text], input[type=email] { width:100%; box-sizing:border-box; padding:9px 10px; font-size:15px; border:1px solid #b9ac85; border-radius:3px; font-family:Arial, Helvetica, sans-serif; }
+  .row { display:flex; align-items:center; gap:10px; padding:6px 0; border-bottom:1px dotted #e4dcc4; font-family:Arial, Helvetica, sans-serif; }
+  .row .nm { flex:1; font-size:14.5px; }
+  .row .pr { width:74px; text-align:right; font-size:14px; color:#555; }
+  .row input[type=number] { width:62px; padding:6px; font-size:15px; text-align:center; border:1px solid #b9ac85; border-radius:3px; }
+  .row .lt { width:76px; text-align:right; font-size:14px; font-weight:bold; }
+  .bank { background:#f8f4e8; border:1px solid #ddd3ba; padding:14px 16px; font-family:Arial, Helvetica, sans-serif; font-size:14.5px; line-height:1.6; margin:18px 0; }
+  .totalbar { position:sticky; bottom:0; background:#1a2e52; color:#fff; padding:14px 18px; display:flex; justify-content:space-between; align-items:center; font-family:Arial, Helvetica, sans-serif; margin:22px -26px -28px; }
+  .totalbar .amt { font-size:22px; font-weight:bold; color:#e8cf8f; }
+  button { background:#b08d3e; color:#fff; border:0; padding:13px 30px; font-size:16px; font-family:Arial, Helvetica, sans-serif; border-radius:3px; cursor:pointer; width:100%; margin-top:16px; }
+  .small { font-size:12.5px; color:#666; }
+  #done { display:none; text-align:center; padding:20px 0 6px; }
+  #done h2 { border:0; color:#1a2e52; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <h1>Drinks Order</h1>
+    <p class="sub">Annual Association Dinner &middot; Wednesday 2 December 2026</p>
+    <p>There is no table service at The Elvetham, so drinks for your table are ordered and paid for in advance, by the bottle. Soft drinks and water are included and will be served throughout the evening, and prosecco will be served at the drinks reception.</p>
+    <p>Enter the number of bottles you would like against each wine. The total adds up as you go, so the amount you pay matches your order exactly. Your order is placed once your payment has been received and checked.</p>
+
+    <form id="orderForm" action="https://docs.google.com/forms/d/e/1FAIpQLSeAi8_9-YG0_YZ5dLQiZJwdS-W5DPgQOheIqrrK6HGYPNyZfg/formResponse" method="POST" target="hidden_iframe">
+      <label class="f" for="nm">Your name</label>
+      <input type="text" id="nm" name="entry.611009472" required>
+      <label class="f" for="em">Email address</label>
+      <input type="email" id="em" name="entry.321132794" required>
+
+      <div id="wines"></div>
+
+      <label class="f" for="ref">Payment reference used</label>
+      <input type="text" id="ref" name="entry.604724324" placeholder="Your name followed by DRINKS">
+      <p class="small">Please pay the total shown below by bank transfer when you send this order, using your name followed by DRINKS as the reference, and put the same reference in the box above.</p>
+
+      <div class="bank">
+        <strong>Pay by bank transfer to:</strong><br>
+        North East Hampshire Conservative Association<br>
+        Sort code: 30-90-15 &nbsp;&middot;&nbsp; Account number: 00624404
+      </div>
+
+      <div class="totalbar"><span>Your order total</span><span class="amt" id="grandTotal">&pound;0.00</span></div>
+      <button type="submit">Send drinks order</button>
+      <p class="small" style="text-align:center;">Wine availability follows The Elvetham's wine list and may vary with supplier stock.</p>
+    </form>
+
+    <div id="done">
+      <h2>Thank you, your order has been sent</h2>
+      <p>Your order total is <strong id="doneTotal"></strong>. If you have not already paid, please pay that amount now by bank transfer to North East Hampshire Conservative Association, sort code 30-90-15, account number 00624404, using your name followed by DRINKS as the reference. Your order will be placed once your payment has been received and checked.</p>
+    </div>
+  </div>
+</div>
+
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+<script>
+var SECTIONS = [
+  ["White Wine", [
+    ["Pinot Grigio, IGT Pavia, Italy", 36, "entry.1524493438"],
+    ["Santa Rita 8km Sauvignon Blanc, Chile", 34, "entry.76526800"],
+    ["Kleindal Chenin Blanc, South Africa", 38, "entry.1606709913"],
+    ["Dashwood Sauvignon Blanc, New Zealand", 42, "entry.863288488"],
+    ["Picpoul de Pinet, France", 39, "entry.834683381"],
+    ["Err\u00e1zuriz Wild Ferment Chardonnay, Chile", 42, "entry.1569787240"],
+    ["Toledana Gavi di Gavi, Italy", 50, "entry.2099124518"],
+    ["Louis Jadot Chablis, France", 70, "entry.1318088112"]
+  ]],
+  ["Ros\u00e9 Wine", [
+    ["Pinot Grigio Ros\u00e9, Italy", 38, "entry.1222332791"],
+    ["Zinfandel Ros\u00e9, California", 39, "entry.1886059255"],
+    ["C\u00f4tes de Provence Ros\u00e9, France", 42, "entry.1773478655"]
+  ]],
+  ["Prosecco", [
+    ["Galanti Prosecco Spumante DOC Extra Dry, Italy", 42.50, "entry.771870795"],
+    ["Galanti Prosecco Spumante Ros\u00e9 DOC Extra Dry, Italy", 44, "entry.304804993"],
+    ["DOC Prosecco, Italy, 200ml", 13, "entry.685364866"],
+    ["Alcohol Free Prosecco, Italy", 30, "entry.1611221384"]
+  ]],
+  ["Red Wine", [
+    ["Le Campagne Cabernet Sauvignon, France", 35, "entry.610497542"],
+    ["Santa Rita 8km Merlot, Chile", 34, "entry.1028174346"],
+    ["Reign of Terroir Pinotage, South Africa", 36, "entry.1022750672"],
+    ["Familia Zuccardi Brazos Malbec, Argentina", 44, "entry.1925365333"],
+    ["Villa Maria Pinot Noir Reserve, New Zealand", 45, "entry.887909125"],
+    ["Rioja Reserva, Vi\u00f1a Real, Spain", 49, "entry.496744713"],
+    ["Ch\u00e2teauneuf-du-Pape, France", 135, "entry.761840300"]
+  ]],
+  ["Champagne", [
+    ["Bouch\u00e9 P\u00e8re &amp; Fils Cuv\u00e9e R\u00e9serve Brut", 69, "entry.1815438164"],
+    ["Lanson P\u00e8re &amp; Fils Brut NV", 110, "entry.2035475675"],
+    ["Lanson Le Ros\u00e9", 125, "entry.157626887"],
+    ["Bollinger Special Cuv\u00e9e NV", 140, "entry.1406726210"],
+    ["Mo\u00ebt &amp; Chandon Brut NV", 98, "entry.1256971274"],
+    ["Tsarine Ros\u00e9 Champagne", 85, "entry.816107368"],
+    ["Tsarine Cuv\u00e9e Premium Brut Champagne", 80, "entry.859104703"]
+  ]]
+];
+function money(n){ return "\u00a3" + n.toFixed(2); }
+var host = document.getElementById('wines');
+SECTIONS.forEach(function(sec){
+  var h = document.createElement('h2'); h.textContent = sec[0]; host.appendChild(h);
+  sec[1].forEach(function(w){
+    var row = document.createElement('div'); row.className = 'row';
+    row.innerHTML = '<span class="nm">' + w[0] + '</span>' +
+      '<span class="pr">' + money(w[1]) + '</span>' +
+      '<input type="number" class="qty" min="0" max="99" step="1" inputmode="numeric" placeholder="0" name="' + w[2] + '" data-price="' + w[1] + '">' +
+      '<span class="lt">' + money(0) + '</span>';
+    host.appendChild(row);
+  });
+});
+function recalc(){
+  var total = 0;
+  document.querySelectorAll('.qty').forEach(function(q){
+    var v = parseInt(q.value, 10);
+    if (isNaN(v) || v < 0) v = 0;
+    var line = v * parseFloat(q.getAttribute('data-price'));
+    q.parentNode.querySelector('.lt').textContent = money(line);
+    total += line;
+  });
+  document.getElementById('grandTotal').textContent = money(total);
+  return total;
+}
+document.querySelectorAll('.qty').forEach(function(q){ q.addEventListener('input', recalc); });
+var submitted = false, lastTotal = 0;
+document.getElementById('orderForm').addEventListener('submit', function(){
+  lastTotal = recalc();
+  submitted = true;
+});
+document.getElementById('hidden_iframe').addEventListener('load', function(){
+  if (submitted) {
+    document.getElementById('orderForm').style.display = 'none';
+    document.getElementById('doneTotal').textContent = money(lastTotal);
+    document.getElementById('done').style.display = 'block';
+    window.scrollTo(0, 0);
+  }
+});
+</script>
+</body>
+</html>
