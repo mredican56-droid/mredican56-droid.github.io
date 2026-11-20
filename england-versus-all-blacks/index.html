@@ -149,6 +149,14 @@
   .opt-head h4{font-family:"Barlow Condensed",sans-serif;font-size:1.25rem;margin:0;text-transform:uppercase;letter-spacing:.02em}
   .opt-tag{font-size:.68rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:3px 8px;background:var(--green);color:#fff}
   .opt-tag.alt{background:var(--surface2);color:var(--ink);border:1px solid var(--line)}
+  .sheet-list{list-style:none;margin:0;padding:0}
+  .sheet-list li{display:flex;gap:10px;align-items:baseline;padding:6px 0;border-bottom:1px solid var(--line)}
+  .sheet-list li:last-child{border-bottom:0}
+  .sheet-list .no{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:1.05rem;width:26px;flex:none;color:var(--muted)}
+  .sheet-list .pos{margin-left:auto;font-size:.78rem;color:var(--muted);text-align:right;white-space:nowrap}
+  .sheet-sub{font-size:.76rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:16px 0 2px}
+  .sheet-note{border:2px solid var(--green);background:color-mix(in srgb,var(--green) 8%,var(--surface));border-radius:14px;padding:16px 18px;margin-bottom:18px}
+  .sheet-note p{margin:0}
   footer{margin-top:44px;border-top:1px solid var(--line);padding:22px 0 40px;font-size:.85rem;color:var(--muted)}
   footer a{word-break:break-word}
   .src li{margin-bottom:5px}
@@ -352,36 +360,86 @@
   </section>
 
   <section id="team-news">
-    <p class="kicker">Team news · Updated Thursday 19 November</p>
-    <h2>Match-day squads — announced Thursday</h2>
-    <p class="lede">The confirmed England and New Zealand match-day squads will be announced on <strong>Thursday 19 November</strong> and will appear here as soon as they are named. Until then, this section holds the latest selection picture as at Wednesday 18 November — England nearly back to full strength; the All Blacks forced into changes but recalling their big names.</p>
+    <p class="kicker">Team news · Announced Thursday 19 November</p>
+    <h2>Team sheets — confirmed</h2>
+    <p class="lede">Both match-day 23s are in. Steve Borthwick makes <strong>nine changes</strong> to the side that put 78 points on Japan: Fin Smith takes the fly-half shirt, Will Joseph keeps his place after his five tries, and Henry Pollock drops to a heavyweight bench. Dave Rennie recalls his big names — and <strong>Beauden Barrett wins his 150th Test cap</strong> at full-back.</p>
 
-    <div class="squad-banner" role="note" aria-label="Match-day squads to be announced Thursday 19 November">
-      <h3 style="margin-bottom:4px">⏳ Awaiting announcement — Thursday 19 November</h3>
-      <p style="margin:0">No match-day 23 has been named yet for either side. The slots below are ready for Thursday's announcement — starting XV (1–15) and replacements (16–23) for both teams — and will replace the training-squad picture underneath once the teams are confirmed.</p>
-      <div class="squad-slots">
-        <div class="squad-slot">
-          <div class="teamhead" style="margin-bottom:2px"><span class="badge eng">ENG</span><h4 style="margin:0">England — match-day 23</h4></div>
-          <p style="margin:0;font-size:.9rem;color:var(--muted)">To be announced Thursday 19 November · Coach: Steve Borthwick · Captain: Maro Itoje</p>
-          <ol>
-            <li>Starting XV 1–15 — to be confirmed</li>
-            <li>Replacements 16–23 — to be confirmed</li>
-          </ol>
-          <p class="tbl-note">Watch points: fly-half (Ford / F. Smith / M. Smith), Will Joseph after five tries v Japan, and returns for Chessum, Furbank and Atkinson.</p>
-        </div>
-        <div class="squad-slot">
-          <div class="teamhead" style="margin-bottom:2px"><span class="badge nz">NZL</span><h4 style="margin:0">New Zealand — match-day 23</h4></div>
-          <p style="margin:0;font-size:.9rem;color:var(--muted)">To be announced Thursday 19 November · Coach: Dave Rennie · Captain: Codie Taylor</p>
-          <ol>
-            <li>Starting XV 1–15 — to be confirmed</li>
-            <li>Replacements 16–23 — to be confirmed</li>
-          </ol>
-          <p class="tbl-note">Watch points: Jordie Barrett's return, Will Jordan's fitness, and the midfield reshuffle without Quinn Tupaea.</p>
-        </div>
+    <div class="sheet-note" role="note" aria-label="Team sheets confirmed">
+      <p><strong>✓ Teams confirmed — announced Thursday 19 November.</strong> England: nine starting changes, with returns for Baxter, George, Heyes, Chessum, Ben Curry, Fin Smith, Atkinson, Freeman and Furbank. New Zealand: Roigard, McKenzie, Jordie Barrett and a fit-again Will Jordan all start; Codie Taylor captains from hooker.</p>
+    </div>
+
+    <div class="grid2" style="margin-bottom:18px">
+      <div class="card flat">
+        <div class="teamhead"><span class="badge eng">ENG</span><h3 style="margin:0">England — team sheet</h3></div>
+        <p style="margin:0;font-size:.9rem;color:var(--muted)">Coach: Steve Borthwick · Captain: Maro Itoje</p>
+        <p class="sheet-sub">Starting XV</p>
+        <ul class="sheet-list">
+          <li><span class="no">1</span><span>Fin Baxter</span><span class="pos">Loosehead prop</span></li>
+          <li><span class="no">2</span><span>Jamie George</span><span class="pos">Hooker</span></li>
+          <li><span class="no">3</span><span>Joe Heyes</span><span class="pos">Tighthead prop</span></li>
+          <li><span class="no">4</span><span>Maro Itoje (c)</span><span class="pos">Lock</span></li>
+          <li><span class="no">5</span><span>Alex Coles</span><span class="pos">Lock</span></li>
+          <li><span class="no">6</span><span>Ollie Chessum</span><span class="pos">Blindside flanker</span></li>
+          <li><span class="no">7</span><span>Ben Curry</span><span class="pos">Openside flanker</span></li>
+          <li><span class="no">8</span><span>Ben Earl</span><span class="pos">Number eight</span></li>
+          <li><span class="no">9</span><span>Jack van Poortvliet</span><span class="pos">Scrum-half</span></li>
+          <li><span class="no">10</span><span>Fin Smith</span><span class="pos">Fly-half</span></li>
+          <li><span class="no">11</span><span>Will Joseph</span><span class="pos">Wing</span></li>
+          <li><span class="no">12</span><span>Seb Atkinson</span><span class="pos">Inside centre</span></li>
+          <li><span class="no">13</span><span>Henry Slade</span><span class="pos">Outside centre</span></li>
+          <li><span class="no">14</span><span>Tommy Freeman</span><span class="pos">Wing</span></li>
+          <li><span class="no">15</span><span>George Furbank</span><span class="pos">Full-back</span></li>
+        </ul>
+        <p class="sheet-sub">Replacements</p>
+        <ul class="sheet-list">
+          <li><span class="no">16</span><span>Luke Cowan-Dickie</span></li>
+          <li><span class="no">17</span><span>Ellis Genge</span></li>
+          <li><span class="no">18</span><span>Will Stuart</span></li>
+          <li><span class="no">19</span><span>George Martin</span></li>
+          <li><span class="no">20</span><span>Greg Fisilau</span></li>
+          <li><span class="no">21</span><span>Henry Pollock</span></li>
+          <li><span class="no">22</span><span>Ben Spencer</span></li>
+          <li><span class="no">23</span><span>Marcus Smith</span></li>
+        </ul>
+        <p class="tbl-note">Nine changes from the Japan XV — only Itoje, Coles and Earl survive in the pack, and van Poortvliet, Slade and Joseph in the backs. George Ford misses out on the 23 altogether; Genge, Martin and Pollock give the bench serious finishing power.</p>
+      </div>
+      <div class="card flat">
+        <div class="teamhead"><span class="badge nz">NZL</span><h3 style="margin:0">New Zealand — team sheet</h3></div>
+        <p style="margin:0;font-size:.9rem;color:var(--muted)">Coach: Dave Rennie · Captain: Codie Taylor</p>
+        <p class="sheet-sub">Starting XV</p>
+        <ul class="sheet-list">
+          <li><span class="no">1</span><span>Ethan de Groot</span><span class="pos">Loosehead prop</span></li>
+          <li><span class="no">2</span><span>Codie Taylor (c)</span><span class="pos">Hooker</span></li>
+          <li><span class="no">3</span><span>Fletcher Newell</span><span class="pos">Tighthead prop</span></li>
+          <li><span class="no">4</span><span>Scott Barrett</span><span class="pos">Lock</span></li>
+          <li><span class="no">5</span><span>Fabian Holland</span><span class="pos">Lock</span></li>
+          <li><span class="no">6</span><span>Tupou Vaa’i</span><span class="pos">Blindside flanker</span></li>
+          <li><span class="no">7</span><span>Peter Lakai</span><span class="pos">Openside flanker</span></li>
+          <li><span class="no">8</span><span>Wallace Sititi</span><span class="pos">Number eight</span></li>
+          <li><span class="no">9</span><span>Cam Roigard</span><span class="pos">Scrum-half</span></li>
+          <li><span class="no">10</span><span>Damian McKenzie</span><span class="pos">Fly-half</span></li>
+          <li><span class="no">11</span><span>Josh Moorby</span><span class="pos">Wing</span></li>
+          <li><span class="no">12</span><span>Jordie Barrett</span><span class="pos">Inside centre</span></li>
+          <li><span class="no">13</span><span>Anton Lienert-Brown</span><span class="pos">Outside centre</span></li>
+          <li><span class="no">14</span><span>Will Jordan</span><span class="pos">Wing</span></li>
+          <li><span class="no">15</span><span>Beauden Barrett</span><span class="pos">Full-back</span></li>
+        </ul>
+        <p class="sheet-sub">Replacements</p>
+        <ul class="sheet-list">
+          <li><span class="no">16</span><span>Asafo Aumua</span></li>
+          <li><span class="no">17</span><span>George Bower</span></li>
+          <li><span class="no">18</span><span>Pasilio Tosi</span></li>
+          <li><span class="no">19</span><span>Anton Segner</span></li>
+          <li><span class="no">20</span><span>Leicester Fainga’anuku</span></li>
+          <li><span class="no">21</span><span>Cortez Ratima</span></li>
+          <li><span class="no">22</span><span>Richie Mo’unga</span></li>
+          <li><span class="no">23</span><span>Rieko Ioane</span></li>
+        </ul>
+        <p class="tbl-note">A landmark day for Beauden Barrett — his 150th Test, only the second All Black to reach the mark. Roigard, McKenzie, Jordie Barrett and Jordan all return after missing or being rested for Cardiff; Lienert-Brown covers the midfield gap left by Quinn Tupaea.</p>
       </div>
     </div>
 
-    <h3 style="margin-bottom:8px">Who's fit, who's out — as at Wednesday 18 November</h3>
+    <h3 style="margin-bottom:8px">Who's fit, who's out — the picture behind the selections</h3>
     <div class="grid2">
       <div>
         <figure class="photo" style="margin:0 0 14px">
@@ -391,11 +449,11 @@
         <div class="card flat">
           <div class="teamhead"><span class="badge eng">ENG</span><h3 style="margin:0">England — Borthwick</h3></div>
           <ul class="tight">
-            <li><span class="in">Back in contention:</span> Ollie Chessum, George Furbank and Seb Atkinson all return to the 36-man training squad at Pennyhill Park after injury.</li>
+            <li><span class="in">All three start:</span> Ollie Chessum (at blindside flanker), George Furbank and Seb Atkinson return from injury straight into the starting XV.</li>
             <li><span class="out">Out:</span> Immanuel Feyi-Waboso (ankle) misses the autumn.</li>
-            <li><strong>Selection headache:</strong> Will Joseph's five tries against Japan give Borthwick a genuine call to make out wide.</li>
-            <li><strong>Fly-half options:</strong> George Ford, Fin Smith and Marcus Smith are all in the squad.</li>
-            <li><strong>Key forwards:</strong> captain Maro Itoje, Ellis Genge, Jamie George, Ben Earl and Henry Pollock headline a settled pack.</li>
+            <li><strong>Rewarded:</strong> Will Joseph's five tries against Japan earn him another start on the left wing.</li>
+            <li><strong>Fly-half call:</strong> Fin Smith starts, Marcus Smith covers from the bench — George Ford misses out on the 23 altogether.</li>
+            <li><strong>Bench power:</strong> Ellis Genge, George Martin and Henry Pollock are held back as finishers behind a starting pack of Baxter, George, Heyes, Itoje, Coles, Chessum, Ben Curry and Earl.</li>
           </ul>
           <p class="tbl-note">Full 36: Baxter, Chessum, Clark, Coles, Cowan-Dickie, B. Curry, Dan, Earl, Fisilau, George, Genge, Heyes, Itoje, Iyogun, Kenningham, Martin, Opoku-Fordjour, Pearson, Pollock, Stuart; Atkinson, Dingwall, Ford, Freeman, Furbank, Joseph, Marchant, McParland, Ojomoh, Slade, F. Smith, M. Smith, Spencer, Steward, Van Poortvliet.</p>
         </div>
@@ -410,9 +468,9 @@
           <ul class="tight">
             <li><span class="out">Out for the tournament:</span> lock Jamie Hannah (fractured shoulder blade) and centre Quinn Tupaea (fractured thumb, needs surgery) — both hurt in Cardiff and flying home.</li>
             <li><span class="in">Called up:</span> Sam Darry (lock) and Billy Proctor (midfield) join the squad in London.</li>
-            <li><span class="in">Expected back:</span> Jordie Barrett (head injury), plus Cam Roigard, Damian McKenzie, captain Codie Taylor and Fabian Holland, all rested against Wales.</li>
-            <li><strong>A chance:</strong> Will Jordan ran at about 80% on his hamstring on Monday with no issues — Rennie rates him a chance for Saturday.</li>
-            <li><strong>Midfield reshuffle:</strong> Anton Lienert-Brown is the likely replacement at centre alongside Jordie Barrett.</li>
+            <li><span class="in">Back and starting:</span> Jordie Barrett (head injury), plus Cam Roigard, Damian McKenzie, captain Codie Taylor and Fabian Holland, all rested against Wales — every one of them is in the XV.</li>
+            <li><strong>Passed fit:</strong> Will Jordan's hamstring held up after running at about 80% on Monday — he starts on the right wing.</li>
+            <li><strong>Midfield reshuffle confirmed:</strong> Anton Lienert-Brown starts at outside centre alongside Jordie Barrett; call-up Billy Proctor misses out on the 23.</li>
           </ul>
           <p class="tbl-note">Rennie has promised his strongest side and admitted his team “let the country down” in Cardiff. The squad are even considering loudspeakers at training to prepare for the Twickenham noise.</p>
         </div>
@@ -499,10 +557,13 @@
   </section>
 
   <footer>
-    <p><strong>About this page:</strong> Fixture, tables, form, team news and matchday information gathered on Wednesday 18 November 2026, ahead of the match. Your matchday plan (two tickets, National Rail times for Hook–Twickenham via Clapham Junction, and Rice Mill Thai Restaurant, 40 York Street) was added on 18 November and updated the same day with the confirmed 17:30 dinner booking and the recommended 19:48 return train. It was amended on Friday 20 November to the later 10:31 outward train, with Troy Heptinstall invited in place of Sophie, who is too ill to go, and amended again the same day once Troy confirmed he is definitely coming: a second outward option, the 11:01 from Hook via Woking and Clapham Junction (arriving Twickenham 12:41, two changes), was added alongside the 10:31, and the Rice Mill table for two at 17:30 is now for Mike and Troy Heptinstall. Match-day squads had not yet been announced — they are due on Thursday 19 November and the team news section above is set up to take them; until then it reflects the training squads and injury updates published that week. The weather is a forecast, so check it again before Saturday.</p>
+    <p><strong>About this page:</strong> Fixture, tables, form, team news and matchday information gathered on Wednesday 18 November 2026, ahead of the match. Your matchday plan (two tickets, National Rail times for Hook–Twickenham via Clapham Junction, and Rice Mill Thai Restaurant, 40 York Street) was added on 18 November and updated the same day with the confirmed 17:30 dinner booking and the recommended 19:48 return train. It was amended on Friday 20 November to the later 10:31 outward train, with Troy Heptinstall invited in place of Sophie, who is too ill to go, and amended again the same day once Troy confirmed he is definitely coming: a second outward option, the 11:01 from Hook via Woking and Clapham Junction (arriving Twickenham 12:41, two changes), was added alongside the 10:31, and the Rice Mill table for two at 17:30 is now for Mike and Troy Heptinstall. The confirmed match-day team sheets were added on Friday 20 November, following Thursday 19 November's announcements: England's 23 as named by the RFU (nine changes from the Japan XV) and New Zealand's 23 as published for Round 6, cross-checked across the RFU preview, Planet Rugby and Reuters. The weather is a forecast, so check it again before Saturday.</p>
     <p>Your plan sources: National Rail Enquiries — Hook to Twickenham, Sat 21 Nov (Option 1 outward 10:31–11:56, via Clapham Junction 11:27–11:43, one change, 1 hour 25 minutes; Option 2 outward 11:01–12:41, via Woking 11:26–11:33 and Clapham Junction 12:12–12:25, two changes, 1 hour 40 minutes; platforms not yet announced for either option; return 19:48 Twickenham–21:18 Hook via Clapham Junction, one change, scheduled timetable times with no reported disruption and no bus replacements on the route; Off-Peak Day Return, standard class: £21.30 with Senior Railcard for Mike, £32.00 full fare for Troy, £53.30 total); Rice Mill Thai Restaurant, 40 York Street, Twickenham — table for two booked for 17:30 on Sat 21 Nov for Mike and Troy Heptinstall.</p>
     <p>Sources:</p>
     <ul class="src">
+      <li>RFU — England team to face New Zealand (team announcement, Thu 19 Nov): <a href="https://www.englandrugby.com/follow/news-and-media/england-team-face-new-zealand-allianz-stadium-nations-championship">englandrugby.com</a></li>
+      <li>Planet Rugby — Nations Championship Round 6 teams (both line-ups in full): <a href="https://www.planetrugby.com/news/nations-championship-round-six-teams-predictions-global-tv-channels-and-more">planetrugby.com</a></li>
+      <li>Reuters — England change nine for New Zealand test (19 Nov 2026): <a href="https://www.reuters.com/sports/england-change-nine-new-zealand-test-pollock-drops-bench-2026-11-19/">reuters.com</a></li>
       <li>RFU — England v New Zealand preview &amp; 36-man squad: <a href="https://www.englandrugby.com/follow/news-and-media/england-v-new-zealand-preview-2026-nations-championship">englandrugby.com</a></li>
       <li>We Talk Rugby — match preview, stats &amp; head-to-head: <a href="https://wetalkrugby.com/england-v-new-zealand-preview/">wetalkrugby.com/england-v-new-zealand-preview</a></li>
       <li>We Talk Rugby — Nations Championship tables &amp; race for the final: <a href="https://wetalkrugby.com/nations-championship-table/">wetalkrugby.com/nations-championship-table</a></li>
